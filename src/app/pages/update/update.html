@@ -1,0 +1,35 @@
+
+<section>
+  <div class="container mt-3">
+    <form [formGroup]="formularioCrear" (ngSubmit)="enviar()">
+      <input type="hidden" name="id" formControlName="id">
+      <div class="mb-3">
+        <label for="title" class="form-label">Titulo</label>
+        <input [ngClass]="{'is-invalid':hasErrors('title','required')}" formControlName="title" type="text" id="title" name="title" class="form-control">
+        @if (hasErrors("title","required")) {
+          <div class="text-danger mt-1">Titulo Requerido</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripcion</label>
+        <textarea formControlName="description" class="form-control" name="description" placeholder="De que trata la tarea..." id="description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="priority" class="form-label">Prioridad</label>
+        <input formControlName="priority" [ngClass]="{'is-invalid':hasErrors('priority','required')}" type="number" name="priority" class="form-control" id="priority">
+        @if (hasErrors("priority","required")) {
+          <div class="text-danger mt-1">Prioridad Requerida</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="isCompleted" class="form-label">¿Completado?</label>
+        <input formControlName="isCompleted" class="ms-3" type="checkbox" name="isCompleted" id="isCompleted">
+      </div>
+      <div class="mb-3">
+        <label for="createAd" class="form-label">Fecha de Creacion</label>
+        <input formControlName="createdAt" type="date" name="createAd" class="form-control" id="createAd">
+      </div>
+      <button type="submit" class="btn btn-primary">Crear Tarea</button>
+    </form>
+  </div>
+</section>
